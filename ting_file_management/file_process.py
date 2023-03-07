@@ -2,6 +2,7 @@ from ting_file_management.file_management import txt_importer
 import sys
 import os
 
+
 def process(path_file, instance):
     for file_dict in instance.queue:
         if file_dict['nome_do_arquivo'] == path_file:
@@ -28,9 +29,11 @@ def remove(instance):
         file_path = instance.dequeue()["nome_do_arquivo"]
         try:
             os.remove(file_path)
-            print(f"Arquivo {file_path} removido com sucesso", file=sys.stdout)
+            print(f"Arquivo {file_path} removido com sucesso",
+            file=sys.stdout)
         except OSError as error:
-            print(f"Ocorreu um erro ao remover o arquivo {file_path}: {error}", file=sys.stdout)
+            print(
+                f"Ocorreu um erro ao remover o arquivo {file_path}: {error}", file=sys.stdout)
 
 
 def file_metadata(instance, position):
