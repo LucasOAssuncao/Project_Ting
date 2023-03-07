@@ -32,9 +32,12 @@ def remove(instance):
             print(f"Arquivo {file_path} removido com sucesso",
             file=sys.stdout)
         except OSError as error:
-            print(
-                f"Ocorreu um erro ao remover o arquivo {file_path}: {error}", file=sys.stdout)
+            print("Ocorreu um erro ao remover o arquivo")
 
 
 def file_metadata(instance, position):
-    """Aqui irá sua implementação"""
+    try:
+        archive_info = instance.search(position)
+        print(archive_info, file=sys.stdout)
+    except IndexError:
+        print("Posição inválida", file=sys.stderr)
