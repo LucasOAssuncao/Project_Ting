@@ -30,8 +30,8 @@ def remove(instance):
         try:
             os.remove(file_path)
             print(
-            f"Arquivo {file_path} removido com sucesso",
-            file=sys.stdout
+                f"Arquivo {file_path} removido com sucesso",
+                file=sys.stdout
             )
         except OSError:
             print("Ocorreu um erro ao remover o arquivo")
