@@ -4,7 +4,7 @@ def exists_word(word, instance):
         item = instance.search(i)
         found_occurrences = []
 
-        for j, line in enumerate(item["linhas_do_arquivo"], start=1):
+        for j, line in enumerate(item["linhas_do_arquivo"]):
             if word.lower() in line.lower():
                 found_occurrences.append({"linha": j})
 
@@ -19,4 +19,11 @@ def exists_word(word, instance):
 
 
 def search_by_word(word, instance):
-    """Aqui irá sua implementação"""
+    files_info = exists_word(word, instance, show_content=True)
+
+    for file_info in files_info:
+        for occurrence in file_info["ocorrencias"]:
+            line_number = occurrence["linha"]
+            line_content = occurrence["conteudo"]
+
+            print(f'"{word}" found in file "{file_info["arquivo"]}", line {line_number}: {line_content}')
